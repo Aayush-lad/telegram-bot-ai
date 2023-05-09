@@ -1,7 +1,7 @@
 
 const TelegramBot = require('node-telegram-bot-api');
 const { Configuration, OpenAIApi } = require('openai');
-const TOKEN = '5947855269:AAHz-4uoBG5giHG3vQIMQjVL4gBVEqqjK5Q';
+const TOKEN = '5947855269:AAEvVWdXHG-WEzYDSooHm6yumTbqdFy_SvI';
 const express = require('express');
 const app = express();
 app.get('/', (req, resp) => {
