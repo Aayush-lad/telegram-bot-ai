@@ -1,7 +1,7 @@
 
 const TelegramBot = require('node-telegram-bot-api');
 const { Configuration, OpenAIApi } = require('openai');
-const TOKEN = '5947855269:AAGH3JCmXNJ_lSoTf0RU6EaU6b3NK3mFkt8';
+const TOKEN = '5947855269:AAHz-4uoBG5giHG3vQIMQjVL4gBVEqqjK5Q';
 const express = require('express');
 const app = express();
 app.get('/', (req, resp) => {
@@ -12,7 +12,7 @@ app.listen(port, () => {
   console.log("server is running at port ")
 })
 const bot = new TelegramBot(TOKEN, { polling: true });
-const key = 'skBIqCVhG5LXspSSTY3NyoT3BlbkFJiHbFpPHPj8Ck8Bs7MOHy';
+const key = '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';
 const org = 'org-JkZ0LUNKNGucB22m3Xj2oe3X';
 console.log("chat bot started");
 const configuration = new Configuration({
