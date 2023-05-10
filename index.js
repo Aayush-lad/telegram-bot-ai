@@ -16,7 +16,6 @@ const bot = new TelegramBot(TOKEN, { polling: false });
 
 const key = process.env.APIKEY;
 const org = process.env.ORG;
-console.log("chat bot started,",key,org);
 const configuration = new Configuration({
   organization: org,
   apiKey: key
@@ -28,6 +27,8 @@ bot.on('message', async function(msg) {
  
   const chatId = msg.chat.id;
   const input = msg.text;
+  console.log(msg);
+
   const openai = new OpenAIApi(configuration);
   const response = await openai.createCompletion({
     prompt: input,
@@ -38,7 +39,7 @@ bot.on('message', async function(msg) {
     frequency_penalty: 0.5,
     presence_penalty: 0,
   })
-
+  console.log(response.data.choices[0].text);
   bot.sendMessage(chatId, `${response.data.choices[0].text}`);
 
 })
