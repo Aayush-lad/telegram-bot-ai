@@ -4,11 +4,11 @@ const { Configuration, OpenAIApi } = require('openai');
 const TOKEN = process.env.TOKEN;
 const express = require('express');
 const app = express();
+const PORT = process.env.PORT || 8001;
 app.get('/', (req, resp) => {
   resp.send('Hello world');
 });
-const port = 3000;
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log("server is running at port ")
 })
 
@@ -16,15 +16,13 @@ const bot = new TelegramBot(TOKEN, { polling: false });
 
 const key = process.env.APIKEY;
 const org = process.env.ORG;
+console.log(key,org,TOKEN);
 const configuration = new Configuration({
   organization: org,
   apiKey: key
 })
 const openai = new OpenAIApi(key);
-bot.on('message', async function(msg) {
- 
-  
- 
+bot.on('message', async function(msg) { 
   const chatId = msg.chat.id;
   const input = msg.text;
   console.log(msg);
@@ -40,6 +38,7 @@ bot.on('message', async function(msg) {
     presence_penalty: 0,
   })
   console.log(response.data.choices[0].text);
+  bot.sendMessage("HI THERE HERE IS YOUR ANSWER ");
   bot.sendMessage(chatId, `${response.data.choices[0].text}`);
 
 })
